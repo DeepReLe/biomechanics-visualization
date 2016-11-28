@@ -67,7 +67,7 @@
         /* Customize container */
         @media (min-width: 768px) {
             .container {
-                                max-width: 900px;
+                                max-width: 730px;
                             }
         }
         .container-narrow > hr {
@@ -133,146 +133,123 @@
                 <!--</ul>-->
                 <!--</nav>-->
 
-                                <h1>Exploring the Biomechanics of a Human Index Finger</h1>
-                <h4 class="text-sm text-muted"> by John Pugliesi &amp; Taegyum Kim,  <span style="font-weight:normal;"><i>November 22, 2016</i></span></h4>
+                                <h1 class="text-center">Exploring the Biomechanics of a Human Index Finger</h1>
+                <h4 class="text-sm text-muted text-center"> by John Pugliesi &amp; Taegyum Kim,  <span style="font-weight:normal;"><i>November 22, 2016</i></span></h4>
                             </div>
 
-                        <div class="row">
-                <div class="col-sm-9">
-                    <h1 id="an-intro-to-tendon-driven-biomechanics">An Intro to Tendon-driven Biomechanics</h1>
-                    <h2 id="re-thinking-robotic-hand-design">Re-Thinking Robotic Hand Design</h2>
-                    <p>Generally speaking, a common design model for robotic arms and hands has been based on what is known as a torque-driven approach. A torque-driven robotic hand has a motor at each individual finger joint, rotating sections of the finger independently [1]. This design intuitively makes sense: Controlling each individual joint in the hand would presumably allow you to achieve great accuracy in controlling the hand’s overall movement. But this is unfortunately not the case – although the mathematics of torque-driven robotics is well understood, such robotic systems have never achieved the dexterity found in a human hand. Because of this inconvenience, researchers have had to consider a fundamentally new way of thinking about robotic hand designs: Human hands are controlled by muscle tendons that move finger bones, and this tendon-based design apparently allows them to do a wide range of interesting tasks [1]. So, why not develop biologically-inspired tendon-driven robotic hands that work the same way? Such robotic hand designs that mimic those of human hands are known as anthropomorphic. In pursuit of creating anthropomorphic robotic hands, researchers have had to re-evaluate the shortcomings of torque-driven hand designs, analyze the fine details of how a biological hand operates, and engineer new tendon-driven designs that make use of their findings. The purpose of this blog post is to provide an overview of some of these research initiatives. And to contribute towards this research, we also introduce hopefully useful methods for visualizing the biomechanics of tendon-driven limbs.</p>
-                    <h2 id="anatomy-and-mechanics-of-a-human-hand">Anatomy and Mechanics of a Human Hand</h2>
-                    <p>In order to achieve a basic understanding of how the human hand works, one can focus on the control of an individual finger. Anatomically speaking, each finger has several tendons attached to it, where these tendons wind along the finger bones in intricate paths, and ultimately connect to one or more muscles. These muscles are in turn controlled by electrical impulses that originate at the brain, and reach the muscles by traveling through the body’s central nervous system [2]. Consider the index finger, whose tendons are controlled by seven muscles. In order to tap the index finger on a computer keyboard, the brain sends each of the seven muscles a signal to contract or relax in such a way that moves the index finger to a desired position [1]. Such behavior is similar to a puppeteer controlling seven strings of a puppet. This anatomical arrangement, where muscles and tendon move bones, is known as a musculoskeletal system, and is the mechanism by which humans and other vertebrae move their bodies [1]. Robotics engineers use these fundamental concepts to develop new anthropomorphic robotic hands.</p>
-                    <div class="figure">
-                    <img src="https://drive.google.com/file/d/0ByQb7Li5F-GUdlhrTk1rSG1RSjg/view?usp=sharing" alt="A human arm is tendon driven" />
-                    <p class="caption">A human arm is tendon driven</p>
-                    </div>
-                    <h2 id="a-note-about-the-complexity-of-replicating-human-limbs-muscle-redundancy">A Note About the Complexity of Replicating Human Limbs: Muscle Redundancy</h2>
-                    <p>These general mechanical principles of tendon-driven systems may be well-understood, but there are a host of challenges associated with implementing such systems in robotic form. Chief among these challenges is understanding a puzzling reality of musculoskeletal systems often referred to as “muscle redundancy” [3]. The paradox of muscle redundancy is essentially the fact that humans have many more muscles than would seemingly be necessary to adequately move their limbs. Some muscles appear to be redundant because they attach to similar, or even the same tendons on a limb as other muscles. This phenomenon is counter-intuitive because it is energetically expensive for the body to develop and maintain muscle mass, so it does not make sense that the human body would waste this energy on maintaining redundant muscles. Indeed, for almost half a century, the perplexing notion of muscle redundancy has often been called “the central problem of motor control” [3].</p>
-                    <p>While neuroscientists and biomechanics researchers have grappled with the problem of muscle redundancy for decades, roboticists have mostly been off on their own, struggling to build dexterous torque-driven robotic hands. But there has been a recent, and potentially powerful realization that so-called “muscle redundancy” may be a key factor that makes tendon-driven human hands superior to torque-driven ones. The idea goes like this: some groups of human muscles may appear to be redundant, but they just might be differentiated enough to enable dexterous motion and functionality in human limbs [3]. If true, this idea could leverage the fields of neuroscience, biomechanics, and physiology towards engineering a truly dexterous anthropomorphic robotic hands.</p>
-                    <p>Unfortunately, building robotic hands that work with a human-inspired arrangement of “redundant” muscles is not a simple task. If the human arm has more muscles than seemingly necessary to control it, how does the brain choose which muscles to control in order to move the arm in some way? Fortunately, engineering is playing a helpful role in answering this question. Where science has helped improve the engineering of better robotic hands, engineering is also being used to improve science’s understanding of how the human brain chooses to control the arm’s many muscles. Researchers at the University of Southern California Brain-Body Dynamics Laboratory are attempting to figure out how the brain makes these decisions by observing real human hands [4]. Using a surgically removed hand from a human cadaver, the researchers attached seven motors to the seven tendons controlling a human index finger. By activating or deactivating each motor, they can observe how the hand’s index finger moves with various motor/tendon tension combinations. With further analysis, the resulting data may help and scientists better understand the biomechanics of how exactly each arm muscle is used in operating a human hand [4].</p>
-                    <h1 id="biomechanics-visualization">Biomechanics Visualization</h1>
-                    <p>Over the past 3 months, part of the DeepReLe Capstone team's goal has been to develop methods to visualize the dynamics of tendon-driven limbs. Here, we present the results of our work.</p>
-                    <h2 id="visualizing-the-dynamics-of-an-index-finger">Visualizing the Dynamics of an Index Finger</h2>
-                    <p>Imagine pressing your index finger down on a hard surface (for example, pressing your finger down on a table). Now imagine that you start off pressing down lightly on the table, but gradually press harder over time. In this case, your finger is not moving in 3D space - it's position is essentially static. But even though the position of your finger is not changing, the amount of force directed out of the tip of your finger <em>is</em> changing.</p>
-                    <p>You could ask the question: &quot;How are the muscles controlling my index finger activating over the time of this pressing action?&quot;</p>
-                    <p>It turns out that a human index finger is controlled by seven tendons. Different combinations of tensions (AKA activations) on these seven muscles results in different force outputs from the tip of the index finger. A single combination of muscle activations is known as an activation set. Here is an example of some activation set data for some various forces:</p>
-                    <div class="figure">
-                    <img src="https://drive.google.com/file/d/0ByQb7Li5F-GUUU54SVc3SUQ3ckk/view?usp=sharing" alt="example activation sets for forces and index finger muscles" />
-                    <p class="caption">example activation sets for forces and index finger muscles</p>
-                    </div>
-                    <p>Due to muscle redundancy, there are actually an infinite number of possible activation sets to achieve any single finger force output. We call this infinite space the activation space. In the case of the index finger, the activation space can be represented in 7-dimensional euclidian space. We set out to visualize this 7-dimensional data using a parallel coordinate plot:</p>
-                    <div class="figure">
-                    <img src="https://drive.google.com/file/d/0ByQb7Li5F-GUN1JQS1lqQnJnUTQ/view?usp=sharing" alt="Parallel Coordinate Plot of seven muscle activations" />
-                    <p class="caption">Parallel Coordinate Plot of seven muscle activations</p>
-                    </div>
-                    <p>The static parallel coordinate plot shows each muscle activation level for a fixed force output. There is an axis for each muscle, labeled M1 through M7.The dynamic case, where force output changes over time, shows more interesting dynamics between each muscle:</p>
-                    <div class="figure">
-                    <img src="https://drive.google.com/file/d/0ByQb7Li5F-GUT2lMNVAxTGJLalU/view?usp=sharing" alt="Animation of parallel coordinate plots" />
-                    <p class="caption">Animation of parallel coordinate plots</p>
-                    </div>
-                    <p>The opacity of the lines indicates the magnitude of the force output - The lower force at the beginning of the animation has more opaque lines, and the lines become more solid as the force output approaches its maximum.</p>
-                    <p>While the parallel coordinate plot helps visualize the index finger's activation space, it would be useful to . Still, for a given force output, some activation levels are more common than others for each finger. You could therefore consider a distribution of possible activation levels for each muscle to achieve some force output.</p>
-                    <p>The following chart shows a distribution of activation levels for each muscles in order to achieve a force output of 27.463 Newtons. Note that activation levels are normalized as percentages of each index finger muscle's range of feasible tensions (in Newtons):</p>
-                    <div class="figure">
-                    <img src="https://drive.google.com/open?id=0ByQb7Li5F-GUM1RlaEY4QUN1bTA" alt="Plots of muscle activation data" />
-                    <p class="caption">Plots of muscle activation data</p>
-                    </div>
-                    <p>What do these distributions of muscle activations look like as the index finger presses down? In other words, what do the activation distributions look like as the finger's force output increases over time?</p>
-                    <p>The following animation visualizes these dynamics:</p>
-                    <div class="figure">
-                    <img src="https://drive.google.com/file/d/0ByQb7Li5F-GUV0szRjhONXVxLWs/view?usp=sharing" alt="Visualization of muscle activation distributions with a changing force output over time" />
-                    <p class="caption">Visualization of muscle activation distributions with a changing force output over time</p>
-                    </div>
-                    <p>For lower forces, there are generally a large number of feasible activation sets - thus the flat distributions. But as the force increases, muscles reach their tension limits, and the distribution of feasible activations becomes more and more concentrated. Eventually, for a very large force output, the activation space shrinks, and the distribution of feasible activations becomes extremely tight - thus the spike in densities at the very end of the animation. You can imagine this large force output as pressing your index finger down extremely hard on a table - the large force will require the muscles to engage in their strongest, but more constrained combinations.</p>
-                    <h1 id="conclusion">Conclusion</h1>
-                    <p>As we develop a more accurate understanding of how the human hand works, and how to utilize this knowledge for creating dexterous robotic hands, the potential future applications become incredibly exciting. On the science side, learning how exactly a human’s arm muscles work when moving the hand could lead to improved surgical methods to repair and even replace damaged muscles. The visualization techniques presented here are hoped to advance our the scientific understanding of how tendon-driven limbs work.</p>
-                    <h3 id="citations">Citations</h3>
-                    <p>[1] F. Valero-Cuevas, Foundations of Neuromechanics, vol. 8, London: Springer, 2015.</p>
-                    <p>[2] Pro Health, &quot;Muscles and Fascia of the Forearm,&quot; 2016. [Online]. Available: https://prohealthsys.com/anatomy/grays-anatomy/index-7/index-7-5/musclesforearm/. [Accessed 9 2016].</p>
-                    <p>[3] B. C. H. Y. E. L. F.J. Valero-Cuevas, &quot;Exploring the high-dimensional structure of muscle redundancy via subject-specific and generic musculoskeletal models,&quot; Journal of Biomechanics, vol. 48, no. 11, p. 2887–2896, 2015.</p>
-                    <p>[4] J. J. V.-C. F. J. Kutch, &quot;Challenges and new approaches to proving the existence of muscle synergies of neural origin,&quot; PLoS Computational Biology, vol. 8, no. 5, 2012.</p>
-                    <p>[5] O. B. F. V.-C. M. Santello, &quot;Transferring synergies from neuroscience to robotics $ Comment on “Hand synergies: Integration of robotics and neuroscience for understanding the control of biological and artificial hands&quot;,&quot; Physics of Life Reviews, Berlin, 2016.</p>
-                    <h1 id="kinematics-of-muscle-movement">Kinematics of Muscle Movement</h1>
-                    <p>The mathematics of limb biomechanics provided a useful background for simulating and analyzing the dynamics of the data.</p>
-                    <h2 id="a-matrix-of-of-moment-arms-rtheta">A matrix of of moment arms: <span class="math inline">\(R(\theta)\)</span></h2>
-                    <p>We can represent the moment arms of muscle/joint combinations with a matrix <span class="math inline">\(R(\theta)\)</span> of moment arms:</p>
-                    <p><span class="math display">\[
-                    R(\theta)^{m\times n} =
-                    \begin{bmatrix}
-                    r(\theta)_{1,1} &amp; r(\theta)_{1,2} &amp; ... &amp; r(\theta)_{1,n} \\
-                    r(\theta)_{2,1} &amp; r(\theta)_{2,2} &amp; ... &amp; r(\theta)_{2,n} \\
-                    \vdots &amp; \vdots &amp; \vdots &amp; \vdots \\
-                    r(\theta)_{m,1} &amp; r(\theta)_{m,2} &amp; ... &amp; r(\theta)_{m,n} \\
-                    \end{bmatrix}
-                    \]</span></p>
-                    <ul>
-                    <li><p>Matrix Rows are joints: <span class="math inline">\(i=1,...,m\)</span></p></li>
-                    <li><p>Matrix Columns are muscles: <span class="math inline">\(j=1,...,n\)</span></p></li>
-                    <li><p><span class="math inline">\(\theta\)</span> is a vector of joint angles of a static limb (aka limb posture)</p></li>
-                    <li><p><span class="math inline">\(r(\theta)_{ij}\)</span> is positive when pulling the jth tendon induces a counterclockwise rotation at the ith joint</p></li>
-                    <li><p>Postural change is represented as a change in theta values <span class="math display">\[
-                    \theta_{0} = [\theta_{01} \cdots \theta_{0m}]^T \\
-                    \theta_{1} = [\theta_{1} \cdots \theta_{m}]^T \\
-                    \Delta\theta = \theta_1 - \theta_0
-                    \]</span></p></li>
-                    </ul>
-                    <h3 id="muscle-excursions">Muscle Excursions</h3>
-                    <p>By changing the joint angles <span class="math inline">\(\Delta \theta\)</span>, and applying this change to <span class="math inline">\(R(\theta)\)</span>, we can calculate the excursions <span class="math inline">\(\Delta s\)</span> of all <span class="math inline">\(n\)</span> muscles:</p>
-                    <p><span class="math display">\[
-                    \Delta s = -R^T(\theta)\Delta \theta = -
-                    \begin{bmatrix}
-                    r(\theta)_{1,1} &amp; r(\theta)_{2,1} &amp; ... &amp; r(\theta)_{n,1} \\
-                    r(\theta)_{1,2} &amp; r(\theta)_{2,2} &amp; ... &amp; r(\theta)_{n,2} \\
-                    \vdots &amp; \vdots &amp; \vdots &amp; \vdots \\
-                    r(\theta)_{1,m} &amp; r(\theta)_{2,m} &amp; ... &amp; r(\theta)_{n,m} \\
-                    \end{bmatrix}
-                    \Delta \theta
-                    \]</span></p>
-                    <h1 id="analysis-methods">Analysis Methods</h1>
-                    <p>The purpose of the cat hindlimb analysis is to visualize the structure of the set of feasible muscle activations to produce all maximal and submaximal force outputs in 3D space</p>
-                    <h2 id="feasible-force-set-ffs">Feasible Force Set (FFS)</h2>
-                    <p>The feasible force set is the set of all possible static force that can be produced by the cat’s hindlimb</p>
-                    <ul>
-                    <li><p>Outputs</p>
-                    <ul>
-                    <li><p>3 Forces (FFS)</p></li>
-                    <li><p>3 Torques (feasible output torque set)</p></li>
-                    <li><p>3 Forces + 3 Torques = 6 degrees of freedom</p></li>
-                    </ul></li>
-                    </ul>
-                    <h2 id="feasible-activation-set-fas">Feasible Activation Set (FAS)</h2>
-                    <ul>
-                    <li><p>n-dimensional, where n is the number of independently controlled muscles acting on a limb</p></li>
-                    <li><p>Visualization</p>
-                    <ul>
-                    <li><p>To visualize the FAS, split up the FAS and visualize each muscle individually</p></li>
-                    <li><p>For each muscle, a <strong>vector map</strong> is represented as a colored sphere. This sphere shows the activation level of that muscle on every point in the FFS</p>
-                    <ul>
-                    <li><p>Color represents the amount of activation</p></li>
-                    <li><p>Each point on the sphere is a point in the FFS</p></li>
-                    </ul></li>
-                    <li><p>For example, the cat hind limb has 31 muscles. Therefore, there are 31 vector maps of unique muscle activations</p></li>
-                    </ul></li>
-                    </ul>
-                </div>
-
-                <div class="col-sm-3 hidden-xs">
-                    <div id="toc" class="toc-container pull-right well" data-spy="affix" data-offset-top="20" data-offset-bottom="200" style="top:50px;">
-                        <h2>Content</h2>
-                        <div class="pull-left" style="padding:0px; margin:0px;">
-                            <ul>
-                            <li><a href="#an-intro-to-tendon-driven-biomechanics">An Intro to Tendon-driven Biomechanics</a></li>
-                            <li><a href="#biomechanics-visualization">Biomechanics Visualization</a></li>
-                            <li><a href="#conclusion">Conclusion</a></li>
-                            <li><a href="#kinematics-of-muscle-movement">Kinematics of Muscle Movement</a></li>
-                            <li><a href="#analysis-methods">Analysis Methods</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
+                        <h2 id="an-intro-to-tendon-driven-biomechanics">An Intro to Tendon-driven Biomechanics</h2>
+            <h3 id="re-thinking-robotic-hand-design">Re-Thinking Robotic Hand Design</h3>
+            <p>Generally speaking, a common design model for robotic arms and hands has been based on what is known as a torque-driven approach. A torque-driven robotic hand has a motor at each individual finger joint, rotating sections of the finger independently [1]. This design intuitively makes sense: Controlling each individual joint in the hand would presumably allow you to achieve great accuracy in controlling the hand’s overall movement. But this is unfortunately not the case – although the mathematics of torque-driven robotics is well understood, such robotic systems have never achieved the dexterity found in a human hand. Because of this inconvenience, researchers have had to consider a fundamentally new way of thinking about robotic hand designs: Human hands are controlled by muscle tendons that move finger bones, and this tendon-based design apparently allows them to do a wide range of interesting tasks [1]. So, why not develop biologically-inspired tendon-driven robotic hands that work the same way? Such robotic hand designs that mimic those of human hands are known as anthropomorphic. In pursuit of creating anthropomorphic robotic hands, researchers have had to re-evaluate the shortcomings of torque-driven hand designs, analyze the fine details of how a biological hand operates, and engineer new tendon-driven designs that make use of their findings. The purpose of this blog post is to provide an overview of some of these research initiatives. And to contribute towards this research, we also introduce hopefully useful methods for visualizing the biomechanics of tendon-driven limbs.</p>
+            <h3 id="anatomy-and-mechanics-of-a-human-hand">Anatomy and Mechanics of a Human Hand</h3>
+            <p>In order to achieve a basic understanding of how the human hand works, one can focus on the control of an individual finger. Anatomically speaking, each finger has several tendons attached to it, where these tendons wind along the finger bones in intricate paths, and ultimately connect to one or more muscles. These muscles are in turn controlled by electrical impulses that originate at the brain, and reach the muscles by traveling through the body’s central nervous system [2]. Consider the index finger, whose tendons are controlled by seven muscles. In order to tap the index finger on a computer keyboard, the brain sends each of the seven muscles a signal to contract or relax in such a way that moves the index finger to a desired position [1]. Such behavior is similar to a puppeteer controlling seven strings of a puppet. This anatomical arrangement, where muscles and tendon move bones, is known as a musculoskeletal system, and is the mechanism by which humans and other vertebrae move their bodies [1]. Robotics engineers use these fundamental concepts to develop new anthropomorphic robotic hands.</p>
+            <div class="figure">
+            <img src="https://drive.google.com/file/d/0ByQb7Li5F-GUdlhrTk1rSG1RSjg/view?usp=sharing" alt="A human arm is tendon driven" />
+            <p class="caption">A human arm is tendon driven</p>
             </div>
+            <h3 id="a-note-about-the-complexity-of-replicating-human-limbs-muscle-redundancy">A Note About the Complexity of Replicating Human Limbs: Muscle Redundancy</h3>
+            <p>These general mechanical principles of tendon-driven systems may be well-understood, but there are a host of challenges associated with implementing such systems in robotic form. Chief among these challenges is understanding a puzzling reality of musculoskeletal systems often referred to as “muscle redundancy” [3]. The paradox of muscle redundancy is essentially the fact that humans have many more muscles than would seemingly be necessary to adequately move their limbs. Some muscles appear to be redundant because they attach to similar, or even the same tendons on a limb as other muscles. This phenomenon is counter-intuitive because it is energetically expensive for the body to develop and maintain muscle mass, so it does not make sense that the human body would waste this energy on maintaining redundant muscles. Indeed, for almost half a century, the perplexing notion of muscle redundancy has often been called “the central problem of motor control” [3].</p>
+            <p>While neuroscientists and biomechanics researchers have grappled with the problem of muscle redundancy for decades, roboticists have mostly been off on their own, struggling to build dexterous torque-driven robotic hands. But there has been a recent, and potentially powerful realization that so-called “muscle redundancy” may be a key factor that makes tendon-driven human hands superior to torque-driven ones. The idea goes like this: some groups of human muscles may appear to be redundant, but they just might be differentiated enough to enable dexterous motion and functionality in human limbs [3]. If true, this idea could leverage the fields of neuroscience, biomechanics, and physiology towards engineering a truly dexterous anthropomorphic robotic hands.</p>
+            <p>Unfortunately, building robotic hands that work with a human-inspired arrangement of “redundant” muscles is not a simple task. If the human arm has more muscles than seemingly necessary to control it, how does the brain choose which muscles to control in order to move the arm in some way? Fortunately, engineering is playing a helpful role in answering this question. Where science has helped improve the engineering of better robotic hands, engineering is also being used to improve science’s understanding of how the human brain chooses to control the arm’s many muscles. Researchers at the University of Southern California Brain-Body Dynamics Laboratory are attempting to figure out how the brain makes these decisions by observing real human hands [4]. Using a surgically removed hand from a human cadaver, the researchers attached seven motors to the seven tendons controlling a human index finger. By activating or deactivating each motor, they can observe how the hand’s index finger moves with various motor/tendon tension combinations. With further analysis, the resulting data may help and scientists better understand the biomechanics of how exactly each arm muscle is used in operating a human hand [4].</p>
+            <h2 id="biomechanics-visualization">Biomechanics Visualization</h2>
+            <p>Over the past 3 months, part of the DeepReLe Capstone team's goal has been to develop methods to visualize the dynamics of tendon-driven limbs. Here, we present the results of our work.</p>
+            <h3 id="visualizing-the-dynamics-of-an-index-finger">Visualizing the Dynamics of an Index Finger</h3>
+            <p>Imagine pressing your index finger down on a hard surface (for example, pressing your finger down on a table). Now imagine that you start off pressing down lightly on the table, but gradually press harder over time. In this case, your finger is not moving in 3D space - it's position is essentially static. But even though the position of your finger is not changing, the amount of force directed out of the tip of your finger <em>is</em> changing.</p>
+            <p>You could ask the question: &quot;How are the muscles controlling my index finger activating over the time of this pressing action?&quot;</p>
+            <p>It turns out that a human index finger is controlled by seven tendons. Different combinations of tensions (AKA activations) on these seven muscles results in different force outputs from the tip of the index finger. A single combination of muscle activations is known as an activation set. Here is an example of some activation set data for some various forces:</p>
+            <div class="figure">
+            <img src="https://drive.google.com/file/d/0ByQb7Li5F-GUUU54SVc3SUQ3ckk/view?usp=sharing" alt="example activation sets for forces and index finger muscles" />
+            <p class="caption">example activation sets for forces and index finger muscles</p>
+            </div>
+            <p>Due to muscle redundancy, there are actually an infinite number of possible activation sets to achieve any single finger force output. We call this infinite space the activation space. In the case of the index finger, the activation space can be represented in 7-dimensional euclidian space. We set out to visualize this 7-dimensional data using a parallel coordinate plot:</p>
+            <div class="figure">
+            <img src="https://drive.google.com/file/d/0ByQb7Li5F-GUN1JQS1lqQnJnUTQ/view?usp=sharing" alt="Parallel Coordinate Plot of seven muscle activations" />
+            <p class="caption">Parallel Coordinate Plot of seven muscle activations</p>
+            </div>
+            <p>The static parallel coordinate plot shows each muscle activation level for a fixed force output. There is an axis for each muscle, labeled M1 through M7.The dynamic case, where force output changes over time, shows more interesting dynamics between each muscle:</p>
+            <div class="figure">
+            <img src="https://drive.google.com/file/d/0ByQb7Li5F-GUT2lMNVAxTGJLalU/view?usp=sharing" alt="Animation of parallel coordinate plots" />
+            <p class="caption">Animation of parallel coordinate plots</p>
+            </div>
+            <p>The opacity of the lines indicates the magnitude of the force output - The lower force at the beginning of the animation has more opaque lines, and the lines become more solid as the force output approaches its maximum.</p>
+            <p>While the parallel coordinate plot helps visualize the index finger's activation space, it would be useful to . Still, for a given force output, some activation levels are more common than others for each finger. You could therefore consider a distribution of possible activation levels for each muscle to achieve some force output.</p>
+            <p>The following chart shows a distribution of activation levels for each muscles in order to achieve a force output of 27.463 Newtons. Note that activation levels are normalized as percentages of each index finger muscle's range of feasible tensions (in Newtons):</p>
+            <div class="figure">
+            <img src="https://drive.google.com/open?id=0ByQb7Li5F-GUM1RlaEY4QUN1bTA" alt="Plots of muscle activation data" />
+            <p class="caption">Plots of muscle activation data</p>
+            </div>
+            <p>What do these distributions of muscle activations look like as the index finger presses down? In other words, what do the activation distributions look like as the finger's force output increases over time?</p>
+            <p>The following animation visualizes these dynamics:</p>
+            <div class="figure">
+            <img src="https://drive.google.com/file/d/0ByQb7Li5F-GUV0szRjhONXVxLWs/view?usp=sharing" alt="Visualization of muscle activation distributions with a changing force output over time" />
+            <p class="caption">Visualization of muscle activation distributions with a changing force output over time</p>
+            </div>
+            <p>For lower forces, there are generally a large number of feasible activation sets - thus the flat distributions. But as the force increases, muscles reach their tension limits, and the distribution of feasible activations becomes more and more concentrated. Eventually, for a very large force output, the activation space shrinks, and the distribution of feasible activations becomes extremely tight - thus the spike in densities at the very end of the animation. You can imagine this large force output as pressing your index finger down extremely hard on a table - the large force will require the muscles to engage in their strongest, but more constrained combinations.</p>
+            <h2 id="conclusion">Conclusion</h2>
+            <p>As we develop a more accurate understanding of how the human hand works, and how to utilize this knowledge for creating dexterous robotic hands, the potential future applications become incredibly exciting. On the science side, learning how exactly a human’s arm muscles work when moving the hand could lead to improved surgical methods to repair and even replace damaged muscles. The visualization techniques presented here are hoped to advance our the scientific understanding of how tendon-driven limbs work.</p>
+            <h4 id="citations">Citations</h4>
+            <p>[1] F. Valero-Cuevas, Foundations of Neuromechanics, vol. 8, London: Springer, 2015. [2] Pro Health, &quot;Muscles and Fascia of the Forearm,&quot; 2016. [Online]. Available: https://prohealthsys.com/anatomy/grays-anatomy/index-7/index-7-5/musclesforearm/. [Accessed 9 2016]. [3] B. C. H. Y. E. L. F.J. Valero-Cuevas, &quot;Exploring the high-dimensional structure of muscle redundancy via subject-specific and generic musculoskeletal models,&quot; Journal of Biomechanics, vol. 48, no. 11, p. 2887–2896, 2015. [4] J. J. V.-C. F. J. Kutch, &quot;Challenges and new approaches to proving the existence of muscle synergies of neural origin,&quot; PLoS Computational Biology, vol. 8, no. 5, 2012. [5] O. B. F. V.-C. M. Santello, &quot;Transferring synergies from neuroscience to robotics $ Comment on “Hand synergies: Integration of robotics and neuroscience for understanding the control of biological and artificial hands&quot;,&quot; Physics of Life Reviews, Berlin, 2016.</p>
+            <h2 id="kinematics-of-muscle-movement">Kinematics of Muscle Movement</h2>
+            <p>The mathematics of limb biomechanics provided a useful background for simulating and analyzing the dynamics of the data.</p>
+            <h3 id="a-matrix-of-of-moment-arms-rtheta">A matrix of of moment arms: <span class="math inline">\(R(\theta)\)</span></h3>
+            <p>We can represent the moment arms of muscle/joint combinations with a matrix <span class="math inline">\(R(\theta)\)</span> of moment arms:</p>
+            <p><span class="math display">\[
+            R(\theta)^{m\times n} =
+            \begin{bmatrix}
+            r(\theta)_{1,1} &amp; r(\theta)_{1,2} &amp; ... &amp; r(\theta)_{1,n} \\
+            r(\theta)_{2,1} &amp; r(\theta)_{2,2} &amp; ... &amp; r(\theta)_{2,n} \\
+            \vdots &amp; \vdots &amp; \vdots &amp; \vdots \\
+            r(\theta)_{m,1} &amp; r(\theta)_{m,2} &amp; ... &amp; r(\theta)_{m,n} \\
+            \end{bmatrix}
+            \]</span></p>
+            <ul>
+            <li><p>Matrix Rows are joints: <span class="math inline">\(i=1,...,m\)</span></p></li>
+            <li><p>Matrix Columns are muscles: <span class="math inline">\(j=1,...,n\)</span></p></li>
+            <li><p><span class="math inline">\(\theta\)</span> is a vector of joint angles of a static limb (aka limb posture)</p></li>
+            <li><p><span class="math inline">\(r(\theta)_{ij}\)</span> is positive when pulling the jth tendon induces a counterclockwise rotation at the ith joint</p></li>
+            <li><p>Postural change is represented as a change in theta values <span class="math display">\[
+            \theta_{0} = [\theta_{01} \cdots \theta_{0m}]^T \\
+            \theta_{1} = [\theta_{1} \cdots \theta_{m}]^T \\
+            \Delta\theta = \theta_1 - \theta_0
+            \]</span></p></li>
+            </ul>
+            <h4 id="muscle-excursions">Muscle Excursions</h4>
+            <p>By changing the joint angles <span class="math inline">\(\Delta \theta\)</span>, and applying this change to <span class="math inline">\(R(\theta)\)</span>, we can calculate the excursions <span class="math inline">\(\Delta s\)</span> of all <span class="math inline">\(n\)</span> muscles:</p>
+            <p><span class="math display">\[
+            \Delta s = -R^T(\theta)\Delta \theta = -
+            \begin{bmatrix}
+            r(\theta)_{1,1} &amp; r(\theta)_{2,1} &amp; ... &amp; r(\theta)_{n,1} \\
+            r(\theta)_{1,2} &amp; r(\theta)_{2,2} &amp; ... &amp; r(\theta)_{n,2} \\
+            \vdots &amp; \vdots &amp; \vdots &amp; \vdots \\
+            r(\theta)_{1,m} &amp; r(\theta)_{2,m} &amp; ... &amp; r(\theta)_{n,m} \\
+            \end{bmatrix}
+            \Delta \theta
+            \]</span></p>
+            <h2 id="analysis-methods">Analysis Methods</h2>
+            <p>The purpose of the cat hindlimb analysis is to visualize the structure of the set of feasible muscle activations to produce all maximal and submaximal force outputs in 3D space</p>
+            <h3 id="feasible-force-set-ffs">Feasible Force Set (FFS)</h3>
+            <p>The feasible force set is the set of all possible static force that can be produced by the cat’s hindlimb</p>
+            <ul>
+            <li><p>Outputs</p>
+            <ul>
+            <li><p>3 Forces (FFS)</p></li>
+            <li><p>3 Torques (feasible output torque set)</p></li>
+            <li><p>3 Forces + 3 Torques = 6 degrees of freedom</p></li>
+            </ul></li>
+            </ul>
+            <h3 id="feasible-activation-set-fas">Feasible Activation Set (FAS)</h3>
+            <ul>
+            <li><p>n-dimensional, where n is the number of independently controlled muscles acting on a limb</p></li>
+            <li><p>Visualization</p>
+            <ul>
+            <li><p>To visualize the FAS, split up the FAS and visualize each muscle individually</p></li>
+            <li><p>For each muscle, a <strong>vector map</strong> is represented as a colored sphere. This sphere shows the activation level of that muscle on every point in the FFS</p>
+            <ul>
+            <li><p>Color represents the amount of activation</p></li>
+            <li><p>Each point on the sphere is a point in the FFS</p></li>
+            </ul></li>
+            <li><p>For example, the cat hind limb has 31 muscles. Therefore, there are 31 vector maps of unique muscle activations</p></li>
+            </ul></li>
+            </ul>
             
             <footer class="footer">
                 <p><b>Exploring the Biomechanics of a Human Index Finger</b> - <i>John Pugliesi &amp; Taegyum Kim</i>, November 22, 2016.</p>
